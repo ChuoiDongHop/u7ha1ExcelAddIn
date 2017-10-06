@@ -141,7 +141,9 @@ namespace u7ha1ExcelAddIn
                   value = value.Trim();
                }
 
-               switch ((VocabularyProperties)j)
+               VocabularyProperties property = (VocabularyProperties)j;
+
+               switch (property)
                {
                   case VocabularyProperties.Index:
                      {
@@ -203,7 +205,12 @@ namespace u7ha1ExcelAddIn
                      break;
                }
 
-               cell.Value = value;
+               if (!cell.HasFormula
+                   && cell.Value2 != null
+                   && cell.Value2.ToString() != value)
+               {
+                  cell.Value = value;
+               }
             }
          }
 
