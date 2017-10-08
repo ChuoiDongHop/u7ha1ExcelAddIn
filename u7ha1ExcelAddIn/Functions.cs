@@ -32,7 +32,7 @@ namespace u7ha1ExcelAddIn
 
       private void WorkbookAfterSaveEventHandler(Excel.Workbook Wb, bool Success)
       {
-         this.Save(GetContent(Wb));
+         this.Save(this.GetContent(Wb));
       }
 
       private string GetContent(Excel.Workbook Wb)
@@ -53,6 +53,8 @@ namespace u7ha1ExcelAddIn
 
                result += json.ToString();
             }
+
+            result += ";";
          }
 
          return result;
